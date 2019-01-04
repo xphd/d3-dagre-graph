@@ -176,13 +176,13 @@ export default {
     const nodesMap = this.nodesMap;
     d3.selectAll("svg g.node")
       .on("click", id => {
-        console.log(nodesMap.get(id));
+        console.log(JSON.stringify(nodesMap.get(id)));
         tooltip
           .transition()
           .duration(200)
           .style("opacity", 0.9);
         tooltip
-          .html(id)
+          .html(JSON.stringify(nodesMap.get(id)))
           .style("left", d3.event.pageX + 5 + "px")
           .style("top", d3.event.pageY - 28 + "px");
         // .style("background", "black");
