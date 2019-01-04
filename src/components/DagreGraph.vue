@@ -1,5 +1,5 @@
 <template>
-  <div :id="containerId" class="dagre-graph-container">
+  <div :id="containerId" class="container dagre-graph-container">
     <div class="zoom-div">
       <button
         v-for="item in directions"
@@ -9,6 +9,7 @@
       <button @click="zoomCtrl(0)" class="zoom">Zoom out</button>
       <button @click="zoomCtrl(1)">Zoom in</button>
     </div>
+
     <svg class="dagre">
       <g class="container"></g>
     </svg>
@@ -27,7 +28,7 @@ export default {
       id: "",
       renderer: null,
       graph: null,
-      direction: "LR",
+      direction: "TB",
       directions: [
         {
           prop: "LR",
@@ -53,7 +54,7 @@ export default {
     };
   },
   created() {
-    this.containerId = this.uuid();
+    this.containerId = this.getId();
     this.graph = new dagreD3.graphlib.Graph()
       .setGraph({
         rankdir: this.direction
@@ -63,7 +64,7 @@ export default {
       });
   },
   methods: {
-    uuid() {
+    getId() {
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000)
           .toString(16)

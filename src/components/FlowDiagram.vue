@@ -1,7 +1,5 @@
 <template>
-  <div class="dagre-graph-container">
-    <DagreGraph :nodes="nodes" :edges="edges"/>
-  </div>
+  <DagreGraph :nodes="nodes" :edges="edges"/>
 </template>
 
 <script>

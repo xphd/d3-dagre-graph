@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "bootstrap-vue": "^2.0.0-rc.11",
     "d3": "^5.7.0",
     "dagre-d3": "^0.6.3",
     "vue": "^2.5.21"
