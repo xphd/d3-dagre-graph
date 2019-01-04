@@ -28,7 +28,7 @@ export default {
       id: "",
       renderer: null, // new dagreD3.render();
       graph: null, // new dagreD3.graphlib.Graph()
-      direction: "TB",
+      direction: "LR",
       directions: [
         {
           prop: "LR",
@@ -147,7 +147,7 @@ export default {
     container = svg.select("g.container");
     // transform
     const transform = d3.zoomIdentity
-      .translate(this.width / 3, this.height / 6)
+      // .translate(this.width / 3, this.height / 6)
       .scale(1);
     this.zoom = d3
       .zoom()
@@ -163,8 +163,10 @@ export default {
     this.strokeEdges();
 
     //
+    const nodes = this.nodes;
     d3.selectAll("svg g.node").on("click", function(d) {
       console.log("node");
+      console.log(nodes[0]);
     });
   },
   watch: {
