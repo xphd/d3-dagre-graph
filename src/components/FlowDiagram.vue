@@ -1,7 +1,16 @@
+<template>
+  <div class="dagre-graph-container">
+    <DagreGraph :nodes="nodes" :edges="edges"/>
+  </div>
+</template>
+
+<!-- 
 <template lang="pug">
   div.dagre-graph-container
     Dagre-Graph(:nodes="nodes" :edges="edges")
 </template>
+ -->
+
 <script>
 /**
  * 流程图
@@ -14,6 +23,9 @@ export default {
       nodes: [],
       edges: []
     };
+  },
+  components: {
+    DagreGraph
   },
   created() {
     this.init();
@@ -99,9 +111,6 @@ export default {
         }
       ];
     }
-  },
-  components: {
-    DagreGraph
   }
 };
 </script>

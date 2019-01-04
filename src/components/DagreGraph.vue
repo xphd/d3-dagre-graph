@@ -1,3 +1,21 @@
+<template>
+  <div :id="containerId" class="dagre-graph-container">
+    <div class="zoom-div">
+      <button
+        v-for="item in directions"
+        :key="item.prop"
+        @click="direction = item.prop"
+      >{{item.label}}</button>
+      <button @click="zoomCtrl('in')" class="zoom">Zoom out</button>
+      <button @click="zoomCtrl('out')">Zoom in</button>
+    </div>
+    <svg class="dagre">
+      <g class="container"></g>
+    </svg>
+  </div>
+</template>
+
+<!--
 <template lang="pug">
   div.dagre-graph-container(:id="containerId")
     div.zoom-div
@@ -7,6 +25,7 @@
     svg.dagre
         g.container
 </template>
+-->
 <script>
 /**
  * 流程图
