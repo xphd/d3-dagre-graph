@@ -6,8 +6,8 @@
         :key="item.prop"
         @click="direction = item.prop"
       >{{item.label}}</button>
-      <button @click="zoomCtrl('in')" class="zoom">Zoom out</button>
-      <button @click="zoomCtrl('out')">Zoom in</button>
+      <button @click="zoomCtrl(0)" class="zoom">Zoom out</button>
+      <button @click="zoomCtrl(1)">Zoom in</button>
     </div>
     <svg class="dagre">
       <g class="container"></g>
@@ -16,9 +16,6 @@
 </template>
 
 <script>
-/**
- * 流程图
- */
 import * as d3 from "d3";
 import dagreD3 from "dagre-d3";
 let container = null;
@@ -72,23 +69,12 @@ export default {
           .toString(16)
           .substring(1);
       }
-      return (
-        s4() +
-        s4() +
-        "-" +
-        s4() +
-        "-" +
-        s4() +
-        "-" +
-        s4() +
-        "-" +
-        s4() +
-        s4() +
-        s4()
-      );
+      // let id = s4()+s4()+ "-"+s4() + "-" +s4() +"-" + s4() +"-" +s4() +s4()+s4();
+      let id = s4() + "-" + s4();
+      return id;
     },
     zoomCtrl(symbal) {
-      let scale = symbal === "out" ? 1.1 : 0.8;
+      let scale = symbal === 1 ? 1.1 : 0.8;
       const svg = d3.select(this.$el).select("svg.dagre");
       this.zoom.scaleBy(svg, scale);
     },
