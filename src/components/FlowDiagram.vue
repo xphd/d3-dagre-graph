@@ -4,13 +4,6 @@
   </div>
 </template>
 
-<!-- 
-<template lang="pug">
-  div.dagre-graph-container
-    Dagre-Graph(:nodes="nodes" :edges="edges")
-</template>
- -->
-
 <script>
 /**
  * 流程图

@@ -15,17 +15,6 @@
   </div>
 </template>
 
-<!--
-<template lang="pug">
-  div.dagre-graph-container(:id="containerId")
-    div.zoom-div
-        button(v-for="item in directions" :key="item.prop" @click="direction = item.prop") {{item.label}}
-        button.zoom(@click="zoomCtrl('in')") 缩小
-        button(@click="zoomCtrl('out')") 扩大
-    svg.dagre
-        g.container
-</template>
--->
 <script>
 /**
  * 流程图
