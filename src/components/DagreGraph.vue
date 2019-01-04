@@ -50,7 +50,8 @@ export default {
       zoom: null,
       containerId: "",
       width: 0,
-      height: 0
+      height: 0,
+      nodesMap: null
     };
   },
   created() {
@@ -99,6 +100,8 @@ export default {
         });
       }
 
+      this.nodesMap = new Map();
+
       //通过operator来画shape(BranchPythonMapOperator: 分支； JoinOperator：合流)
       this.nodes.forEach(item => {
         let state = item.state ? item.state : "no-status";
@@ -114,6 +117,8 @@ export default {
           shape: shape,
           class: item.value.operator + " dagre " + state
         });
+
+        this.nodesMap.set(item["id"], item);
       });
       this.renderer(container, this.graph);
     },
@@ -162,12 +167,32 @@ export default {
     this.strokeNodes();
     this.strokeEdges();
 
-    //
-    const nodes = this.nodes;
-    d3.selectAll("svg g.node").on("click", function(d) {
-      console.log("node");
-      console.log(nodes[0]);
-    });
+    // once a node is clicked or mouse over, do somthing
+    var tooltip = d3
+      .select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+    const nodesMap = this.nodesMap;
+    d3.selectAll("svg g.node")
+      .on("click", id => {
+        console.log(nodesMap.get(id));
+        tooltip
+          .transition()
+          .duration(200)
+          .style("opacity", 0.9);
+        tooltip
+          .html(id)
+          .style("left", d3.event.pageX + 5 + "px")
+          .style("top", d3.event.pageY - 28 + "px");
+        // .style("background", "black");
+      })
+      .on("mouseout", () => {
+        tooltip
+          .transition()
+          .duration(500)
+          .style("opacity", 0);
+      });
   },
   watch: {
     nodes() {
