@@ -26,8 +26,8 @@ export default {
   data() {
     return {
       id: "",
-      renderer: null,
-      graph: null,
+      renderer: null, // new dagreD3.render();
+      graph: null, // new dagreD3.graphlib.Graph()
       direction: "TB",
       directions: [
         {
@@ -161,6 +161,11 @@ export default {
 
     this.strokeNodes();
     this.strokeEdges();
+
+    //
+    d3.selectAll("svg g.node").on("click", function(d) {
+      console.log("node");
+    });
   },
   watch: {
     nodes() {
