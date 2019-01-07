@@ -169,7 +169,7 @@ export default {
 
     // once a node is clicked or mouse over, do somthing
     var tooltip = d3
-      .select("body")
+      .select(".zoom-div")
       .append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
